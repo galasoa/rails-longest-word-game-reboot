@@ -1,0 +1,17 @@
+<h1>Result</h1>
+
+<% if @valid_letters %>
+  <% if @english_word %>
+    <p><strong>Congratulations!</strong> <%= @answer %> is a valid English word!</p>
+    <% @score = @answer.length ** 2 %>
+  <% else %>
+    <p>Sorry but <strong><%= @answer %></strong> does not seem to be a valid English word...</p>
+  <% end %>
+<% else %>
+  <p>Sorry but <strong><%= @answer %></strong> can't be built out of <%= @letters %></p>
+<% end %>
+
+<h2>Your score: <%= @score %></h2>
+
+<%= link_to "Play again!", new_path %>
+

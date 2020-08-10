@@ -3,7 +3,6 @@
 <% if @valid_letters %>
   <% if @english_word %>
     <p><strong>Congratulations!</strong> <%= @answer %> is a valid English word!</p>
-    <% @score = @answer.length ** 2 %>
   <% else %>
     <p>Sorry but <strong><%= @answer %></strong> does not seem to be a valid English word...</p>
   <% end %>
@@ -12,6 +11,8 @@
 <% end %>
 
 <h2>Your score: <%= @score %></h2>
+<h3>Total score: <%= @total_score %></h3>
+<!-- <h3>your session score: <%= @session_score %></h3> -->
 
 <%= link_to "Play again!", new_path %>
 

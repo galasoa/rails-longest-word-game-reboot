@@ -11,7 +11,7 @@ class GamesController < ApplicationController
     @answer = (params[:answer] || "").upcase
     @valid_letters = valid_letters?(@answer, @letters)
     @english_word = english_word?(@answer)
-    @score = 0
+    @total_score = score_check(@answer) if @valid_letters && @english_word
   end
 
   private
@@ -25,5 +25,10 @@ class GamesController < ApplicationController
     raw_data = open(url).read # huge string
     json = JSON.parse(raw_data) # converts string to hash object
     json['found']
+  end
+
+  def score_check(word)
+    @score = word.chars.count ** 2
+    @session_score = session[:score] += @score.to_i
   end
 end
